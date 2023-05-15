@@ -1,0 +1,40 @@
+<?php
+
+use Jenssegers\Blade\Blade;
+
+class Login extends CI_Controller {
+
+	public function index()
+	{
+
+        $login_salah = '';
+
+        if ($this->session->has_userdata('username')) {
+            redirect('Page/index');
+        }
+
+        if ($this->input->post()) {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+    
+            $user = \Orm\User::first();
+            
+            if ($username == $user->username && $password == $user->password) {
+                $userdata = [
+                    'username' => $user->username,
+                ];
+                $this->session->set_userdata($userdata);
+                redirect('Page/index');
+            } else {
+                $login_salah = 'Wrong username or password. Try again';
+            }
+        }
+
+		view('login', ['login_salah' => $login_salah]);
+	}
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('Login');
+    }
+}
