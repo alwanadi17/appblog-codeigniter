@@ -10,7 +10,7 @@ class Login extends CI_Controller {
         $login_salah = '';
 
         if ($this->session->has_userdata('username')) {
-            redirect('Page/index');
+            redirect('backend/Dashboard/index');
         }
 
         if ($this->input->post()) {
@@ -24,7 +24,7 @@ class Login extends CI_Controller {
                     'username' => $user->username,
                 ];
                 $this->session->set_userdata($userdata);
-                redirect('Page/index');
+                redirect('backend/Dashboard/index');
             } else {
                 $login_salah = 'Wrong username or password. Try again';
             }

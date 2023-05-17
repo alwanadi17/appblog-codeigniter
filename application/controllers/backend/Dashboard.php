@@ -2,7 +2,7 @@
 
 use Jenssegers\Blade\Blade;
 
-class Page extends MY_Controller {
+class Dashboard extends MY_Controller {
 
 	public function index()
 	{
@@ -15,8 +15,8 @@ class Page extends MY_Controller {
 		view('backend/Dashboard/table');
 	}
 		
-		public function test()
-		{
+	public function test()
+	{
 		// $views = VIEWPATH;
 		// $cache = APPPATH.'cache';
 		// $blade = new Blade($views, $cache);
